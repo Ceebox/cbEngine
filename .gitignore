@@ -35,3 +35,4 @@
 /include/GLFW
 /include/KHR
 
+/src/glad.c
