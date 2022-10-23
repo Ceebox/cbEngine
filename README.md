@@ -8,12 +8,12 @@
 cbEngine was inspired when I thought about creating a custom engine for [LowRezJam](https://itch.io/jam/lowrezjam-2022), I wanted it to be very simple and low level, in this case - literally just providing a graphics window and drawing a custom pixel array to the screen, along with a few other functions to improve usability.
 
 cbEngine is not architectured very well - it was made over the course of a few days as I learnt OpenGL and more about C++. I intended to turn it into a C++ static library but have not gotten round to it - doing that would improve the workflow significantly.
+
+To learn about OpenGL I used [LearnOpenGL](https://learnopengl.com/), a really useful tool for understanding the library. It also has instructions on how to install the required libraries - although I used MinGW for this project so some steps are slightly different.
 #
 ##  *Getting Started*
 
-To get the engine working correctly, there are some additional libraries that need to be installed.
-
-  
+To get the engine working correctly, there are some additional libraries that need to be installed.  
 
 Requirements:
 - [GLAD](https://glad.dav1d.de/) (GL 3.3 and KHR)
