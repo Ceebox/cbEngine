@@ -227,6 +227,21 @@ void SetPixel(int x, int y, Pixel pixel)
     SetPixel(x, y, pixel.r, pixel.g, pixel.b);
 }
 
+void FillScreen(uint_fast8_t r, uint_fast8_t g, uint_fast8_t b)
+{
+    for (int i = 0; i < sizeof(pixels); i+= 3)
+    {
+        pixels[i] = r;
+        pixels[i + 1] = g;
+        pixels[i + 2] = b;
+    }
+}
+
+void FillScreen(Pixel pixel)
+{
+    FillScreen(pixel.r, pixel.g, pixel.b);
+}
+
 // glfw does not accept member classes
 void OnWindowChanged(GLFWwindow *window, int width, int height)
 {

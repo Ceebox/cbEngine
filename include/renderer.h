@@ -30,6 +30,8 @@ class Renderer
 Pixel GetPixel(int x, int y);
 void SetPixel(int x, int y, Pixel pixel);
 void SetPixel(int x, int y, uint_fast8_t r, uint_fast8_t g, uint_fast8_t b);
+void FillScreen(Pixel pixel);
+void FillScreen(uint_fast8_t r, uint_fast8_t g, uint_fast8_t b);
 
 void OnWindowChanged(GLFWwindow *window, int width, int height);
 
