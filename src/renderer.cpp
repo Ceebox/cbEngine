@@ -1,12 +1,15 @@
 #include "renderer.h"
 
-const int windowWidth = 64;
-const int windowHeight = 64;
+#define WIDTH 64
+#define HEIGHT 64
+
+const int windowWidth = WIDTH;
+const int windowHeight = HEIGHT;
 
 GLFWwindow* Core::window;
 
 //The main pixel array
-GLubyte pixels[16384]; //Array size is width * height * 4 (1 byte per channel)
+GLubyte pixels[WIDTH * HEIGHT * 3]; // Array size is width * height * 3 (1 byte per channel)
 
 int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
 {
@@ -15,6 +18,10 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
 
     // Create a main window object
     window = glfwCreateWindow(800, 800, "CbEngine", NULL, NULL);
@@ -140,6 +147,7 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     // Call the start function now everything is initialised 
     Start();
 
+    // Time variables
     float lastTime = 0.0f;
     float deltaTime = 0.0f;
 
@@ -158,7 +166,7 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
 
         glUseProgram(shaderProgram);
 
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, windowWidth, windowHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, windowWidth, windowHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels);
 
         glBindTexture(GL_TEXTURE_2D, texture);
         glBindVertexArray(VAO);
