@@ -7,5 +7,5 @@ bool IsKeyPressed(int key)
 
 bool IsKeyDown(int key)
 {
-    return false;
+    return (glfwGetKey(Core::window, key) == GLFW_REPEAT);
 }
