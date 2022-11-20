@@ -242,6 +242,16 @@ void FillScreen(Pixel pixel)
     FillScreen(pixel.r, pixel.g, pixel.b);
 }
 
+int GetWindowHeight()
+{
+    return windowHeight;
+}
+
+int GetWindowWidth()
+{
+    return windowWidth;
+}
+
 // glfw does not accept member classes
 void OnWindowChanged(GLFWwindow *window, int width, int height)
 {
