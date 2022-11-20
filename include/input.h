@@ -6,9 +6,6 @@
 bool IsKeyPressed(int key);
 bool IsKeyDown(int key);
 
-bool IsButtonPressed(int key);
-bool IsButtonDown(int key);
-
 /* Key names */
 #define KEY_SPACE 32
 #define KEY_APOSTROPHE 39 /* ' */
