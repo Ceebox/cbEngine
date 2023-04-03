@@ -166,7 +166,8 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
 
         glUseProgram(shaderProgram);
 
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, windowWidth, windowHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, windowWidth,
+                     windowHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels);
 
         glBindTexture(GL_TEXTURE_2D, texture);
         glBindVertexArray(VAO);
@@ -210,7 +211,7 @@ Pixel GetPixel(int x, int y)
 //Sets pixel on texture based on co-ordinates
 void SetPixel(int x, int y, uint_fast8_t r, uint_fast8_t g, uint_fast8_t b)
 {
-    if (x > windowWidth || y > windowHeight)
+    if (x > windowWidth || y > windowHeight || x < 0 || y < 0)
     {
         return;
     }
@@ -229,7 +230,7 @@ void SetPixel(int x, int y, Pixel pixel)
 
 void FillScreen(uint_fast8_t r, uint_fast8_t g, uint_fast8_t b)
 {
-    for (int i = 0; i < sizeof(pixels); i+= 3)
+    for (long long unsigned int i = 0; i < sizeof(pixels); i+= 3)
     {
         pixels[i] = r;
         pixels[i + 1] = g;
