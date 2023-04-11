@@ -1,11 +1,11 @@
 SOURCES = src/engine.cpp src/input.cpp src/pixel.cpp src/renderer.cpp src/glad.c
 LIBTEST_SOURCES = src/main.cpp
 
-CXX_FLAGS = -O3 -Wall -Wno-missing-braces -I ./include/glad/ -I ./include/KHR/ -I ./include/GLFW/ -I ./include/
+CXX_FLAGS = -O3 -Wall -Wno-missing-braces -I ./include/glad/ -I ./include/
 
 ifeq ($(OS),Windows_NT)
 	# Windows specific compile flags
-	CXX_FLAGS += -lopengl32 -lgdi32 -lwinmm -L ./lib/
+	CXX_FLAGS += -I ./include/KHR/ -I ./include/GLFW/ -lopengl32 -lgdi32 -lwinmm -L ./lib/
 else
 	CXX_FLAGS += -lGL -lX11 -ldl
 endif
