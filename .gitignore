@@ -30,9 +30,11 @@
 *.exe
 *.out
 *.app
+cbenginetest
 
 /include/glad
 /include/GLFW
 /include/KHR
 
 /src/glad.c
+bin/
