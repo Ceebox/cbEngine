@@ -88,11 +88,6 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    // Vertex buffer
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
-                            (void *)0);
-    glEnableVertexAttribArray(0);
-
     // Assign verticies
     float vertices[] = {
         // positions // colors // texture coords
