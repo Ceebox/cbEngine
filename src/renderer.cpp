@@ -11,7 +11,7 @@ GLFWwindow* Core::window;
 //The main pixel array
 GLubyte pixels[WIDTH * HEIGHT * 3]; // Array size is width * height * 3 (1 byte per channel)
 
-int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
+int Renderer::Init(StartFn start, UpdateFn update)
 {
     // Set up the main window
     glfwInit();
@@ -145,7 +145,7 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
     // Call the start function now everything is initialised 
-    Start();
+    start();
 
     // Time variables
     float lastTime = 0.0f;
@@ -158,7 +158,7 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
 
         if (&window != NULL)
         {
-            Update(deltaTime);
+            update(deltaTime);
         }
 
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);

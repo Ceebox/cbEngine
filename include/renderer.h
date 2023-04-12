@@ -13,7 +13,7 @@
 class Renderer
 {
     public:
-        int Init(void(&Start)(), void (&Update)(float deltaTime));
+        int Init(StartFn start, UpdateFn update);
         void SetWindow(GLFWwindow *newWindow);
 
     private:
