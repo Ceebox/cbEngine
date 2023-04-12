@@ -8,6 +8,10 @@
 #include "glad.h"
 #include "glfw3.h"
 
+typedef void (*StartFn) ();
+typedef void (*UpdateFn) (float deltaTime);
+typedef void (*FinishFn) ();
+
 struct Core
 {
     static GLFWwindow *window;
