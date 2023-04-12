@@ -12,7 +12,7 @@ void InitWindow(void (&Start)(), void (&Update)(float deltaTime), void (&Finish)
 void SetTitle(std::string windowTitle);
 void SetWindowSize(int size);
 void SetVsync(bool enabled);
-void Quit();
+void CloseWindow();
 
 //Other functions
 
