@@ -37,5 +37,3 @@ library:
 	$(CXX) -c -fPIC $(SOURCES) $(CXX_FLAGS)
 	ar rcs $(LIB_OUT)$(LIB_EXT) *.o
 	rm *.o
-
-

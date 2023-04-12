@@ -48,7 +48,7 @@ From there, to build the sample code simply run build.bat or the makefile on def
 	    Pixel  pixel  =  GetPixel(1,  1);
 	    std::cout  <<  pixel.r  <<  std::endl; //255
 	    
-        }
+    }
     
     //Called every frame
     void Update(float deltaTime)
