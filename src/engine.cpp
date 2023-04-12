@@ -1,11 +1,11 @@
 #include "engine.h"
 
-void InitWindow(void (&Start)(), void (&Update)(float deltaTime), void (&Finish)())
+void InitWindow(StartFn start, UpdateFn update, FinishFn finish)
 {
     Renderer renderer;
-    renderer.Init(Start, Update);
+    renderer.Init(start, update);
 
-    Finish();
+    finish();
 }
 
 void SetTitle(std::string title)

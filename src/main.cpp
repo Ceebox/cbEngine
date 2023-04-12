@@ -34,7 +34,7 @@ void Finish()
 //Init the engine here
 int main()
 {
-    InitWindow(Start, Update, Finish);
+    InitWindow(&Start, &Update, &Finish);
    
     return 0;
 }

@@ -8,7 +8,7 @@
 
 //Engine functions
 
-void InitWindow(void (&Start)(), void (&Update)(float deltaTime), void (&Finish)());
+void InitWindow(StartFn start, UpdateFn update, FinishFn finish);
 void SetTitle(std::string windowTitle);
 void SetWindowSize(int size);
 void SetVsync(bool enabled);
