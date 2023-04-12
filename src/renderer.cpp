@@ -156,7 +156,7 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     {
         glfwPollEvents();
 
-        if (&window != NULL)
+        if (window != NULL)
         {
             Update(deltaTime);
         }
@@ -229,7 +229,7 @@ void SetPixel(int x, int y, Pixel pixel)
 
 void FillScreen(uint_fast8_t r, uint_fast8_t g, uint_fast8_t b)
 {
-    for (int i = 0; i < sizeof(pixels); i+= 3)
+    for (u_int64_t i = 0; i < sizeof(pixels); i+= 3)
     {
         pixels[i] = r;
         pixels[i + 1] = g;
