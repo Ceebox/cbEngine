@@ -36,5 +36,6 @@ cbenginetest
 /include/GLFW
 /include/KHR
 
+/src/glad.c
 lib/
 bin/

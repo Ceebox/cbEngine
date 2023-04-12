@@ -1,4 +1,4 @@
-SOURCES = src/engine.cpp src/input.cpp src/pixel.cpp src/renderer.cpp lib/glad.c
+SOURCES = src/engine.cpp src/input.cpp src/pixel.cpp src/renderer.cpp src/glad.c
 LIBTEST_SOURCES = src/main.cpp
 
 LIB_OUT = libcbengine
