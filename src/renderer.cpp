@@ -19,9 +19,9 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-#ifdef __APPLE__
+#if defined(__APPLE__) || defined(__MACH__)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
+#endif // __APPLE__ || _MACH__
 
     // Create a main window object
     window = glfwCreateWindow(800, 800, "CbEngine", NULL, NULL);
@@ -156,7 +156,7 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     {
         glfwPollEvents();
 
-        if (&window != NULL)
+        if (window != NULL)
         {
             Update(deltaTime);
         }

@@ -1,3 +1,6 @@
+libs/
+bin/
+
 # Prerequisites
 *.d
 
@@ -27,12 +30,13 @@
 *.lib
 
 # Executables
+cbengine
 *.exe
 *.out
 *.app
 
-/include/glad
-/include/GLFW
-/include/KHR
+*.zip
 
-/src/glad.c
+# bear
+.cache/
+compile_commands.json
