@@ -88,11 +88,6 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    // Vertex buffer
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
-                            (void *)0);
-    glEnableVertexAttribArray(0);
-
     // Assign verticies
     float vertices[] = {
         // positions // colors // texture coords
@@ -156,7 +151,7 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     {
         glfwPollEvents();
 
-        if (&window != NULL)
+        if (window != NULL)
         {
             Update(deltaTime);
         }
@@ -230,7 +225,7 @@ void SetPixel(int x, int y, Pixel pixel)
 
 void FillScreen(uint_fast8_t r, uint_fast8_t g, uint_fast8_t b)
 {
-    for (long long unsigned int i = 0; i < sizeof(pixels); i+= 3)
+    for (long unsigned int i = 0; i < sizeof(pixels); i+= 3)
     {
         pixels[i] = r;
         pixels[i + 1] = g;
