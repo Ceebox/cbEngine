@@ -61,7 +61,6 @@ ifeq ($(os), Linux)
 	c_compiler = gcc
 	lib_ext = so
 endif # Linux
-cpp_defs += -D$(platform)=1
 
 project = cbengine$(project_ext)
 
@@ -93,13 +92,13 @@ $(s_objects): $(s_dir)/%.o: $(src_dir)/%.cpp
 	$(cpp_compiler) $(cpp_flags) $(cpp_includes) -c $< -o $@
 
 $(d_lib): $(headers) $(d_dir) $(d_objects) glad
-	$(cpp_compiler) $(cpp_flags) $(cpp_defs) -shared $(cpp_includes) $(cpp_ldflags) $(d_objects) $(lib_dir)/glad.o -o $@
+	$(cpp_compiler) $(cpp_flags) -shared $(cpp_includes) $(cpp_ldflags) $(d_objects) $(lib_dir)/glad.o -o $@
 
 $(d_objects): $(d_dir)/%.o: $(src_dir)/%.cpp
 	$(cpp_compiler) $(cpp_flags) -fPIC $(cpp_includes) -c $< -o $@
 
 $(lib_dir)/glad.o: $(lib_dir)/glad.c $(lib_dir)/glad/glad.h
-	$(c_compiler) $(c_flags) $(cpp_defs) -I$(lib_dir) -c $< -o $@
+	$(c_compiler) $(c_flags) -I$(lib_dir) -c $< -o $@
 
 $(project): $(headers) $(sources) $(main) $(d_lib)
 	$(cpp_compiler) $(cpp_flags) $(cpp_includes) $(main) -o $@ -L$(bin_dir) -lcbengine
