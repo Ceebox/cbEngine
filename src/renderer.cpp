@@ -38,9 +38,7 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     const char *vertexSource =
         "#version 330 core\n"
         "layout(location = 0) in vec3 aPos;\n"
-        "layout(location = 1) in vec3 aColor;\n"
-        "layout(location = 2) in vec2 aTexCoord;\n"
-        "out vec3 ourColor;\n"
+        "layout(location = 1) in vec2 aTexCoord;\n"
         "out vec2 TexCoord;\n"
         "void main()\n"
         "{\n"
@@ -51,7 +49,6 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     const char *fragSource =
         "#version 330 core \n"
         "out vec4 FragColor; \n"
-        "in vec3 ourColor; \n"
         "in vec2 TexCoord; \n"
         "uniform sampler2D ourTexture; \n"
         "void main() \n"
@@ -95,11 +92,11 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
 
     // Assign verticies
     float vertices[] = {
-        // positions // colors // texture coords
-        1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,   // top right
-        1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,  // bottom right
-        -1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
-        -1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f   // top left
+        // positions // texture coords
+        1.0f, 1.0f, 0.0f, 1.0f, 1.0f,   // top right
+        1.0f, -1.0f, 0.0f, 1.0f, 0.0f,  // bottom right
+        -1.0f, -1.0f, 0.0f, 0.0f, 0.0f, // bottom left
+        -1.0f, 1.0f, 0.0f, 0.0f, 1.0f   // top left
     };
     unsigned int indices[] = {
         0, 1, 3, // first Triangle
@@ -122,12 +119,9 @@ int Renderer::Init(void (&Start)() ,void (&Update)(float deltaTime))
     // Position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)0);
     glEnableVertexAttribArray(0);
-    // Color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
     // Texture coord attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
