@@ -5,8 +5,8 @@
 // Contains important core stuff for the engine
 ///////////////////////////////////////////////
 
-#include "glad.h"
-#include "glfw3.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 typedef void (*StartFn) ();
 typedef void (*UpdateFn) (float deltaTime);
