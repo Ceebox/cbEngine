@@ -62,10 +62,12 @@ ifeq ($(os), Linux)
 	lib_ext = so
 endif # Linux
 
-project = cbengine$(project_ext)
+project_name := cbengine
+project = $(project_name)$(project_ext)
 
-s_lib := $(bin_dir)/lib$(project).a
-d_lib := $(bin_dir)/lib$(project).$(lib_ext)
+# library files
+s_lib := $(bin_dir)/lib$(project_name).a
+d_lib := $(bin_dir)/lib$(project_name).$(lib_ext)
 
 
 .PHONY: all clean static dynamic glad project
@@ -101,7 +103,7 @@ $(lib_dir)/glad.o: $(lib_dir)/glad.c $(lib_dir)/glad/glad.h
 	$(c_compiler) $(c_flags) -I$(lib_dir) -c $< -o $@
 
 $(project): $(headers) $(sources) $(main) $(d_lib)
-	$(cpp_compiler) $(cpp_flags) $(cpp_includes) $(main) -o $@ -L$(bin_dir) -lcbengine
+	$(cpp_compiler) $(cpp_flags) $(cpp_includes) $(main) -o $@ -L$(bin_dir) -l$(project_name)
 
 $(bin_dir):
 	-@mkdir $@
