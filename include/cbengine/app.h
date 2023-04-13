@@ -13,6 +13,8 @@ namespace cbengine {
         ~App();
 
         App& operator =(const App& _app) = delete;
+
+        void run();
     private:
         Window _win;
     };
