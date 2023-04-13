@@ -81,6 +81,7 @@ namespace cbengine {
     void Window::onFrameBufferSizeChange(GLFWwindow *_win,
                                             int _width,
                                             int _height) {
+        (void) _win;
         glViewport(0, 0, _width, _height);
     }
 }
