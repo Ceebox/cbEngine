@@ -20,8 +20,8 @@ cpp_std = -std=c++11
 cpp_opt = -O2
 cpp_warn = -Wall -Wextra -pedantic
 cpp_defs =
-cpp_includes = -I$(inc_dir) -I$(lib_dir)
-cpp_ldflags = -L./$(bin_dir) -lglfw3
+cpp_includes = -I$(inc_dir) -I$(lib_dir) -I$(inc_dir)/$(project_name)
+cpp_ldflags = -L./$(bin_dir)
 cpp_flags = $(cpp_std) $(cpp_opt) $(cpp_warn)
 
 # c compiler
@@ -94,7 +94,7 @@ $(s_objects): $(s_dir)/%.o: $(src_dir)/%.cpp
 	$(cpp_compiler) $(cpp_flags) $(cpp_includes) -c $< -o $@
 
 $(d_lib): $(headers) $(d_dir) $(d_objects) glad
-	$(cpp_compiler) $(cpp_flags) -shared $(cpp_includes) $(cpp_ldflags) $(d_objects) $(lib_dir)/glad.o -o $@
+	$(cpp_compiler) $(cpp_flags) -shared $(cpp_includes) $(d_objects) $(lib_dir)/glad.o -o $@ $(cpp_ldflags)
 
 $(d_objects): $(d_dir)/%.o: $(src_dir)/%.cpp
 	$(cpp_compiler) $(cpp_flags) -fPIC $(cpp_includes) -c $< -o $@
@@ -103,7 +103,7 @@ $(lib_dir)/glad.o: $(lib_dir)/glad.c $(lib_dir)/glad/glad.h
 	$(c_compiler) $(c_flags) -I$(lib_dir) -c $< -o $@
 
 $(project): $(headers) $(sources) $(main) $(d_lib)
-	$(cpp_compiler) $(cpp_flags) $(cpp_includes) $(main) -o $@ -L$(bin_dir) -l$(project_name)
+	$(cpp_compiler) $(cpp_flags) $(cpp_includes) $(main) -o $@ -L$(bin_dir) -l$(project_name) $(cpp_ldflags)
 
 $(bin_dir):
 	-@mkdir $@
