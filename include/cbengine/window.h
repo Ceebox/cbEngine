@@ -28,6 +28,11 @@ namespace cbengine {
         void getSize(int* _width, int* _height) const;
         GLFWwindow* getWindow() const;
     private:
+        static void onSizeChange(GLFWwindow *_win, int _width, int _height);
+        static void onFrameBufferSizeChange(GLFWwindow *_win,
+                                            int _width,
+                                            int _height);
+    private:
         std::string _title;
         int _width;
         int _height;

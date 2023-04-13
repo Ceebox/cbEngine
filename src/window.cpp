@@ -1,3 +1,5 @@
+#include <glad/glad.h>
+
 #include "window.h"
 
 
@@ -68,5 +70,17 @@ namespace cbengine {
 
     GLFWwindow* Window::getWindow() const {
         return this->_win;
+    }
+
+    void Window::onSizeChange(GLFWwindow *_win, int _width, int _height) {
+        (void) _height;
+        // makes window size square
+        glfwSetWindowSize(_win, _width, _width);
+    }
+
+    void Window::onFrameBufferSizeChange(GLFWwindow *_win,
+                                            int _width,
+                                            int _height) {
+        glViewport(0, 0, _width, _height);
     }
 }
