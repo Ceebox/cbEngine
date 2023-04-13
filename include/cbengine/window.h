@@ -6,6 +6,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "renderer.h"
+
 
 namespace cbengine {
     class Window {
@@ -16,6 +18,15 @@ namespace cbengine {
         ~Window();
 
         Window& operator =(const Window& _win) = delete;
+
+        void create();
+        void destroy();
+        bool shouldClose() const;
+        void setTitle(const std::string& _title);
+        void setSize(int _width, int _height);
+        const std::string& getTitle() const;
+        void getSize(int* _width, int* _height) const;
+        GLFWwindow* getWindow() const;
     private:
         std::string _title;
         int _width;
