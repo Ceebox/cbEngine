@@ -38,6 +38,7 @@ namespace cbengine {
         int _height;
         bool _isOpen;
         GLFWwindow* _win;
+        friend class Renderer;
     };
 }
 
