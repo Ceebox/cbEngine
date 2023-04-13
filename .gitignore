@@ -27,12 +27,22 @@
 *.lib
 
 # Executables
+cbengine
 *.exe
 *.out
 *.app
 
-/include/glad
-/include/GLFW
-/include/KHR
+*.zip
 
-/src/glad.c
+# vscode
+*.code-workspace
+.vscode/
+
+# bear
+compile_commands.json
+.cache/
+
+# cbengine
+libs/
+bin/
+!include/cbengine/
