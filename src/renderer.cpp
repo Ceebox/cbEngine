@@ -199,7 +199,7 @@ Pixel GetPixel(int x, int y)
 {
     Pixel pixel = Pixel(0, 0, 0);
 
-    int pixelIndex = ((y * windowHeight) + (x - windowWidth - 1)) * 3;
+    int pixelIndex = ((windowHeight - y) * windowHeight + (x - 1)) * 3;
 
     pixel.r = (int)pixels[pixelIndex];
     pixel.g = (int)pixels[pixelIndex + 1];
@@ -216,7 +216,7 @@ void SetPixel(int x, int y, uint_fast8_t r, uint_fast8_t g, uint_fast8_t b)
         return;
     }
 
-    uint_fast32_t pixelIndex = ((y * windowHeight) + (x - windowWidth - 1)) * 3;
+    uint_fast32_t pixelIndex = ((windowHeight - y) * windowHeight + (x - 1)) * 3;
 
     pixels[pixelIndex] = r;
     pixels[pixelIndex + 1] = g;
